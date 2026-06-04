@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+input {
+  outline: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  background-color: #fff;
+  height: 7px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 209, 209, 1);
+  border-radius: 20px;
+}
+
+.vertical-scrollbar::-webkit-scrollbar {
+  background-color: #fff;
+  width: 5px;
+}
+
+.vertical-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 209, 209, 1);
+  border-radius: 20px;
+}

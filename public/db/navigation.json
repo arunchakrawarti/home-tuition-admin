@@ -1,0 +1,53 @@
+{
+  "side_bar_menu": {
+    "home_menu": {
+      "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 1024 1024' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg' > <path d='M946.5 505L534.6 93.4a31.93 31.93 0 0 0-45.2 0L77.5 505c-12 12-18.8 28.3-18.8 45.3 0 35.3 28.7 64 64 64h43.4V908c0 17.7 14.3 32 32 32H448V716h112v224h265.9c17.7 0 32-14.3 32-32V614.3h43.4c17 0 33.3-6.7 45.3-18.8 24.9-25 24.9-65.5-.1-90.5z'></path></svg>",
+      "route": "/",
+      "label": "dashboard"
+    },
+    "buying_menu": [
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M0 0h24v24H0V0z'></path><path d='M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'></path></svg>",
+        "route": "/categories/main-category",
+        "label": "categories"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 32 32' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path d='M 16 3 C 8.832 3 3 8.832 3 16 C 3 23.168 8.832 29 16 29 C 23.168 29 29 23.168 29 16 C 29 8.832 23.168 3 16 3 z M 16 5 C 22.065 5 27 9.935 27 16 C 27 22.065 22.065 27 16 27 C 9.935 27 5 22.065 5 16 C 5 9.935 9.935 5 16 5 z M 13 11 L 13 22 L 15 22 L 15 18 L 17.5 18 C 19.431 18 21 16.431 21 14.5 C 21 12.569 19.431 11 17.5 11 L 13 11 z M 15 13 L 17.5 13 C 18.327 13 19 13.673 19 14.5 C 19 15.327 18.327 16 17.5 16 L 15 16 L 15 13 z'></path></svg>",
+        "route": "/blog-post",
+        "label": "Blog Post"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M0 0h24v24H0V0z'></path><path d='M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'></path></svg>",
+        "route": "/services",
+        "label": "services"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M0 0h24v24H0V0z'></path><path d='M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7h9v6h-9z'></path></svg>",
+        "route": "/page-manager/add-new",
+        "label": "page manager"
+      }
+    ],
+    "other_menu": [
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M0 0h24v24H0V0z'></path><path d='M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z'></path></svg>",
+        "route": "/payment-summary/ledger",
+        "label": "payment summary"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 640 512' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path d='M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'></path></svg>",
+        "route": "/calculate-logistic",
+        "label": "calculate logistic"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><rect width='8' height='4' x='8' y='2' rx='1' ry='1'></rect><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'></path><path d='M12 11h4'></path><path d='M12 16h4'></path><path d='M8 11h.01'></path><path d='M8 16h.01'></path></svg>",
+        "route": "/list-inventory",
+        "label": "list inventory"
+      },
+      {
+        "icon": "<svg stroke='currentColor' fill='none' stroke-width='2' viewBox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><rect width='8' height='4' x='8' y='2' rx='1' ry='1'></rect><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'></path><path d='M12 11h4'></path><path d='M12 16h4'></path><path d='M8 11h.01'></path><path d='M8 16h.01'></path></svg>",
+        "route": "/weight-calculator",
+        "label": "weight calculator"
+      }
+    ]
+  }
+}
