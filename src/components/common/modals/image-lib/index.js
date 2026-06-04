@@ -38,7 +38,7 @@ const ImagLibraryModal = ({
     uploadFile,
     deleteFile,
     setFilesList,
-  } = useFile("https://itsoft-api.devloperhemant.com");
+  } = useFile("https://htnm-blog-api.devloperhemant.com");
 
   const { totalImages, totalPages, currentPage } = paginationInfo;
 
