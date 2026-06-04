@@ -7,7 +7,7 @@ import { signIn } from "~/lib/redux/slices/auth-slice";
 import { errorToast } from "~/utils/toastMessage";
 const SignIn = () => {
   const [formData, setFormData] = useState({
-    phoneNo: "919334432464",
+    phoneNo: "8210925188",
     password: "12345",
   });
   const dispatch = useDispatch();
