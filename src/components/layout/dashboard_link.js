@@ -11,7 +11,7 @@ const DashboardLink = ({
       <Link
         href={route}
         className={`${
-          active ? "bg-blue-100 text-blue-500" : "bg-transparent text-gray-400"
+          active ? "bg-blue-100 text-blue-500" : "bg-transparent text-gray-900"
         } w-full hover:bg-blue-50 hover:text-blue-400 rounded-md py-2.5 px-3 flex flex-row items-center gap-1.5 transition-all duration-200`}
       >
         <span

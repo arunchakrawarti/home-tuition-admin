@@ -27,12 +27,12 @@ const DashboardCard = ({
   return (
     <div className="w-full shadow-sm rounded-lg relative bg-white overflow-auto">
       <div className="w-fit flex flex-col p-5">
-        <span className="text-[11px] font-medium text-gray-500 capitalize">
+        <span className="text-[13px] font-medium text-gray-800 capitalize">
           {label}
         </span>
 
-        <p className="font-semibold text-balance">{title}</p>
-        <span className="text-[9.5px] font-medium text-gray-500">
+        <p className="font-semibold text-balance text-xl">{title}</p>
+        <span className="text-[12px] font-medium text-gray-800">
           {analytics}
         </span>
       </div>

@@ -52,11 +52,11 @@ const TableRow = ({ data = {} }) => {
       >
         {limitTextLength(heading, 35)}
         <br />
-        <span className="text-[10px] text-gray-400">
+        <span className="text-[10px] text-gray-600">
           {limitTextLength(description, 60)}
         </span>
       </th>
-      <td className="px-4 py-3 flex-center">{category || "Not provided"}</td>
+      <td className="px-4 py-3 flex-center text-black">{category || "Not provided"}</td>
       <td className="px-4 py-3 text-blue-600 underline text-center">
         <Link
           target="_blank"
@@ -65,7 +65,7 @@ const TableRow = ({ data = {} }) => {
           /{limitTextLength(slug, 20)}
         </Link>
       </td>
-      <td className="px-4 py-3 text-center">{publishDate}</td>
+      <td className="px-4 py-3 text-center text-black">{publishDate}</td>
       <td className="px-4 py-3 flex-center">
         <Link
           href={`/services/update-service?serviceId=${_id}`}

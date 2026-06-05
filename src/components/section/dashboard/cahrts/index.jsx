@@ -99,7 +99,7 @@ const MainChart = () => {
       {/* chart 1 */}
       <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
         <div className=" border-b border-gray-200 pb-2">
-          <h4 className="text-[14px] font-medium text-gray-500">
+          <h4 className="text-[14px] font-medium text-gray-900">
             Monthly Enquiry → Order Conversion
           </h4>
         </div>
@@ -145,7 +145,7 @@ const MainChart = () => {
 
       <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
         <div className=" border-b border-gray-200 pb-2">
-          <h4 className="text-[14px] font-medium text-gray-500">
+          <h4 className="text-[14px] font-medium text-gray-900">
             Business (Purchase)
           </h4>
         </div>
@@ -164,7 +164,7 @@ const MainChart = () => {
 
       {/* chart 3 */}
 
-      <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
+      {/* <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
         <div className=" border-b border-gray-200 pb-2">
           <h4 className="text-[14px] font-medium text-gray-500">
             Business (Purchase)
@@ -181,11 +181,11 @@ const MainChart = () => {
             <Legend />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </div> */}
 
       {/* chart 4 */}
 
-      <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
+      {/* <div className="w-full aspect-video  flex flex-col gap-5 bg-white shadow-sm rounded-lg p-4">
         <div className=" border-b border-gray-200 pb-2">
           <h4 className="text-[14px] font-medium text-gray-500">
             Monthly Enquiry → Order Conversion
@@ -227,7 +227,7 @@ const MainChart = () => {
             />
           </AreaChart>
         </ResponsiveContainer>
-      </div>
+      </div> */}
     </div>
   );
 };

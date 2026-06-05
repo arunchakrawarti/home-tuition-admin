@@ -62,13 +62,13 @@ const TableRow = ({ data = {} }) => {
           <div>
             {limitTextLength(title, 35)}
             <br />
-            <span className="text-[10px] text-gray-400">
+            <span className="text-[10px] text-gray-600">
               {limitTextLength(description, 60)}
             </span>
           </div>
         </div>
       </th>
-      <td className="px-4 py-3 flex-center">
+      <td className="px-4 py-3 flex-center text-black">
         {category?.name || "Not provided"}
       </td>
       <td className="px-4 py-3 text-blue-600 underline text-center">
@@ -79,7 +79,7 @@ const TableRow = ({ data = {} }) => {
           /{limitTextLength(slug, 20)}
         </Link>
       </td>
-      <td className="px-4 py-3 text-center">{publishDate}</td>
+      <td className="px-4 py-3 text-center text-black">{publishDate}</td>
       <td className="px-4 py-3 flex-row flex-center gap-2">
         <label className="inline-flex items-center cursor-pointer">
           <input
@@ -149,7 +149,7 @@ export const AllBlog = ({ page }) => {
             </div>
           )}
           <table className="w-full text-sm text-left text-gray-500 ">
-            <thead className="text-[12px] text-gray-700  border-b border-blue-400 ">
+            <thead className="text-[12px] text-gray-900  border-b border-blue-400 ">
               <tr>
                 <th
                   scope="col"

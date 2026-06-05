@@ -20,7 +20,7 @@ export const ServiceLayout = ({ children, params }) => {
               <Link
                 href={route}
                 className={`${
-                  route === path ? "bg-blue-100 text-blue-600" : "text-gray-400"
+                  route === path ? "bg-blue-100 text-blue-600" : "text-gray-900"
                 }  w-full py-1.5 px-3 capitalize rounded-2xl transition-all duration-150`}
               >
                 {label}

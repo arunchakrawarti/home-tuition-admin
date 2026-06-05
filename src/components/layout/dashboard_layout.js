@@ -76,7 +76,7 @@ export default function DashboardLayout({ children, pageTitle }) {
 
               {/* buy group  */}
               <div className="py-4 border-b w-full flex flex-col gap-2">
-                <span className="text-[11px] font-medium text-gray-500  px-3">
+                <span className="text-[11px] font-medium text-gray-900  px-3">
                   Tool
                 </span>
                 {/* buy menu */}
@@ -109,7 +109,7 @@ export default function DashboardLayout({ children, pageTitle }) {
           <div className="w-full absolute bottom-0 left-0 ">
             {isUserMenu && (
               <div className="p-3 w-[95%] mx-auto bg-gray-100 rounded-lg mb-2 flex flex-col">
-                <h3 className="capitalize font-semibold text-gray-600 text-[16px]">
+                <h3 className="capitalize font-semibold text-gray-900 text-[16px]">
                   {role}
                 </h3>
                 <p className="text-[12px] text-gray-400">{email}</p>
@@ -199,7 +199,7 @@ export default function DashboardLayout({ children, pageTitle }) {
             </button>
             <Link
               href="#"
-              className="flex flex-row items-center gap-1 text-gray-400"
+              className="flex flex-row items-center gap-1 text-gray-800"
             >
               <span className="text-lg ">
                 <svg
@@ -214,7 +214,7 @@ export default function DashboardLayout({ children, pageTitle }) {
                   <path d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"></path>
                 </svg>
               </span>
-              <h1 className="text-sm font-medium ">{pageTitle}</h1>
+              <h1 className="text-md font-medium text-gray-800">{pageTitle}</h1>
             </Link>
           </div>
 
@@ -239,7 +239,7 @@ export default function DashboardLayout({ children, pageTitle }) {
               </div>
             </div>
 
-            <Link
+            {/* <Link
               href="#"
               className="text-xl text-blue-500 hover:text-blue-600 p-2 rounded-full transition-all duration-200 hover:bg-blue-100"
             >
@@ -254,7 +254,7 @@ export default function DashboardLayout({ children, pageTitle }) {
               >
                 <path d="M20 17H22V19H2V17H4V10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10V17ZM9 21H15V23H9V21Z"></path>
               </svg>
-            </Link>
+            </Link> */}
           </div>
         </header>
 

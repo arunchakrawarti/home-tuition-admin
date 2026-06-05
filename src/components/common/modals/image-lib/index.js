@@ -151,7 +151,7 @@ const ImagLibraryModal = ({
 
           {/* header  */}
           <div className="flex w-full flex-col gap-3 border-b border-gray-200 pb-3">
-            <h1 className="text-nowrap text-xl font-semibold text-gray-700">
+            <h1 className="text-nowrap text-xl font-semibold text-gray-900">
               {heading}
             </h1>
 
