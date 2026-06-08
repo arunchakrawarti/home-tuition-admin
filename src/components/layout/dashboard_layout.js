@@ -56,7 +56,7 @@ export default function DashboardLayout({ children, pageTitle }) {
           <nav className="flex py-4 flex-col gap-7 h-full">
             <div className="px-4 ">
               <Image
-                src="/header-logo.png"
+                src="/hometuitionlogo.png"
                 alt="logo"
                 height={80}
                 width={190}
