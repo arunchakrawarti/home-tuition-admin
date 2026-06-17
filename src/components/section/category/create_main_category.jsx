@@ -113,7 +113,7 @@ export const CreateMainCategory = ({ categoryId = null }) => {
     console.log(id, confirmDelete);
     try {
       if (confirmDelete) {
-        await deleteCategory({id, token}).unwrap();
+        await deleteCategory({ id, token }).unwrap();
         toast.success("Category deleted successfully");
       }
     } catch (error) {
@@ -239,7 +239,9 @@ export const CreateMainCategory = ({ categoryId = null }) => {
                   <span className="w-fit text-[13px] rounded-lg bg-slate-200 px-2 py-1 text-gray-600">
                     {slug}
                   </span>
-                  <p className="text-[14px] text-gray-600">{description}</p>
+                  <p className="w-full text-[14px] text-gray-600 break-words line-clamp-3">
+                    {description}
+                  </p>
                   <div className="w-full flex flex-row items-center">
                     <Link
                       href={`/categories/main-category?categoryId=${_id}`}
