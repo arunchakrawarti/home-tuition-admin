@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PaginationV2 from "~/components/common/PaginationV2";
-import { fetchQueries } from "~/lib/redux/slices/query-slice";
+import { deleteQuery, fetchQueries } from "~/lib/redux/slices/query-slice";
 import QueryRow from "./QueryRow";
 
 const DOC_LIMIT = 10;
@@ -18,6 +18,21 @@ const QueryList = ({ page = 1 }) => {
     dataLoading,
     documentCount = 0,
   } = useSelector((state) => state.query);
+
+  const handleDelete = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this query?"
+  );
+
+  if (!confirmDelete) return;
+
+  await dispatch(
+    deleteQuery({
+      token,
+      id,
+    })
+  );
+};
 
   useEffect(() => {
     if (token) {
@@ -62,6 +77,7 @@ const QueryList = ({ page = 1 }) => {
                 <th className="px-4 py-3 font-semibold">Message</th>
                 <th className="px-4 py-3 font-semibold text-center">Source</th>
                 <th className="px-4 py-3 font-semibold text-center">Date</th>
+                <th className="px-4 py-3 font-semibold text-center">Action</th>
               </tr>
             </thead>
 
@@ -72,6 +88,7 @@ const QueryList = ({ page = 1 }) => {
                       key={query._id}
                       data={query}
                       srNo={index + 1}
+                      handleDelete={handleDelete}
                     />
                   ))
                 : !dataLoading && (

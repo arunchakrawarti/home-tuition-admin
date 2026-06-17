@@ -50,7 +50,23 @@ export const fetchCategories = createAsyncThunk(
     }
   }
 );
-
+export const deleteCategory = createAsyncThunk(
+  "category/deleteCategory",
+  async ({id,token}, { rejectWithValue }) => {
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${BACKEND_API_BASE_URL}/api/category/${id}`,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to delete category."
+      );
+    }
+  }
+);
 // Initial state
 const initialState = {
   categoryList: [],
@@ -109,6 +125,22 @@ const categorySlice = createSlice({
       })
       .addCase(fetchCategories.rejected, (state, action) => {
         state.dataLoading = false;
+        state.error = action.payload;
+      })
+      // Delete Category
+      .addCase(deleteCategory.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteCategory.fulfilled, (state, action) => {
+        state.loading = false;
+        const deletedCategoryId = action.payload?._id;
+        state.categoryList = state.categoryList.filter(
+          (category) => category._id !== deletedCategoryId
+        );
+      })
+      .addCase(deleteCategory.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       });
   },

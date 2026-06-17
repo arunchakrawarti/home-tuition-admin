@@ -70,6 +70,25 @@ export const fetchSingleBlog = createAsyncThunk(
   }
 );
 
+export const deleteBlog = createAsyncThunk(
+  "blog/deleteBlog",
+  async (option, { rejectWithValue }) => {
+    const { token, blogId } = option;
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${BACKEND_API_BASE_URL}/api/admin/blog/${blogId}`,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response?.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to delete blog."
+      );
+    }
+  }
+);
+
 // Initial state
 const initialState = {
   blogList: [],
@@ -144,7 +163,28 @@ const blogSlice = createSlice({
       .addCase(fetchSingleBlog.rejected, (state, action) => {
         state.dataLoading = false;
         state.error = action.payload;
-      });
+      })
+
+
+
+.addCase(deleteBlog.pending, (state) => {
+  state.loading = true;
+  state.error = null;
+})
+.addCase(deleteBlog.fulfilled, (state, action) => {
+  state.loading = false;
+
+  state.blogList = state.blogList.filter(
+    (blog) => blog._id !== action.meta.arg.blogId
+  );
+
+  state.documentCount = Math.max(0, state.documentCount - 1);
+})
+.addCase(deleteBlog.rejected, (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
+});
+
   },
 });
 

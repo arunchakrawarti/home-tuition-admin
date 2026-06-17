@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCategories,
   createCategory,
+  deleteCategory,
 } from "~/lib/redux/slices/main-category-slice";
 import { errorToast, successToast } from "~/utils/toastMessage";
 import Cookies from "js-cookie";
@@ -45,7 +46,7 @@ export const CreateMainCategory = ({ categoryId = null }) => {
     event.preventDefault();
 
     const resultAction = await dispatch(
-      createCategory({ token, categoryId: id, categoryData: data })
+      createCategory({ token, categoryId: id, categoryData: data }),
     );
 
     if (createCategory.fulfilled.match(resultAction)) {
@@ -89,7 +90,7 @@ export const CreateMainCategory = ({ categoryId = null }) => {
   useEffect(() => {
     if (categoryId) {
       const selectedCategory = categoryList?.find(
-        (category) => category?._id === categoryId
+        (category) => category?._id === categoryId,
       );
 
       if (selectedCategory) {
@@ -106,6 +107,19 @@ export const CreateMainCategory = ({ categoryId = null }) => {
 
     return () => {};
   }, [categoryId, categoryList]);
+
+  const handleddelete = async (id) => {
+    const confirmDelete = confirm("Are you sure want to delete this category?");
+    console.log(id, confirmDelete);
+    try {
+      if (confirmDelete) {
+        await deleteCategory({id, token}).unwrap();
+        toast.success("Category deleted successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main className="w-full grid grid-cols-3 gap-3">
@@ -245,9 +259,7 @@ export const CreateMainCategory = ({ categoryId = null }) => {
                       </svg>
                     </Link>
                     <button
-                      onClick={() =>
-                        confirm("Are you sure want to delete this category?")
-                      }
+                      onClick={() => handleddelete(_id)}
                       className="hover:bg-blue-100 transition-all duration-100 rounded-lg p-1.5 text-[0.9rem] text-blue-500"
                     >
                       <svg

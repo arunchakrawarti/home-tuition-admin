@@ -1,5 +1,4 @@
 "use client";
-
 import Cookies from "js-cookie";
 import moment from "moment/moment";
 import Image from "next/image";
@@ -8,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PaginationV2 from "~/components/common/PaginationV2";
 import { createBlog } from "~/lib/redux/slices/blog-slice";
-import { fetchServices } from "~/lib/redux/slices/service-slice";
+import { deleteService, fetchServices } from "~/lib/redux/slices/service-slice";
 import { limitTextLength } from "~/utils/limitText";
 const token = Cookies.get("access_token");
 
@@ -23,8 +22,27 @@ const TableRow = ({ data = {} }) => {
         token,
         blogId: blog_id,
         blogData: { published: !isPublished },
-      })
+      }),
     );
+  };
+
+  const handleDelete = async (id) => {
+    const confirmDelete = confirm("Are you sure want to delete this blog?");
+
+    try {
+      if (confirmDelete) {
+        await dispatch(
+          deleteService({
+            slug: id,
+            token,
+          }),
+        ).unwrap();
+
+        toast.success("Blog deleted successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
@@ -56,7 +74,9 @@ const TableRow = ({ data = {} }) => {
           {limitTextLength(description, 60)}
         </span>
       </th>
-      <td className="px-4 py-3 flex-center text-black">{category || "Not provided"}</td>
+      <td className="px-4 py-3 flex-center text-black">
+        {category || "Not provided"}
+      </td>
       <td className="px-4 py-3 text-blue-600 underline text-center">
         <Link
           target="_blank"
@@ -84,6 +104,23 @@ const TableRow = ({ data = {} }) => {
             <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 5.63l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41z"></path>
           </svg>
         </Link>
+        <button
+          onClick={() => handleDelete(_id)}
+          className="hover:bg-red-100 transition-all duration-100 rounded-lg p-1.5 text-[0.9rem] text-red-500"
+        >
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path d="M17 6V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v2H3v2h1v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8h1V6h-4zM9 5h6v1H9V5zm9 14H6V8h12v11zM9 10h2v6H9zm4 0h2v6h-2z"></path>
+          </svg>
+        </button>
       </td>
     </tr>
   );
@@ -92,7 +129,7 @@ export const AllService = ({ page }) => {
   const currentBrands = [];
   const dispatch = useDispatch();
   const { serviceList, dataLoading, documentCount } = useSelector(
-    (state) => state.service
+    (state) => state.service,
   );
 
   useEffect(() => {

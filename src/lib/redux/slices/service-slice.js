@@ -70,6 +70,25 @@ export const fetchSingleServices = createAsyncThunk(
   }
 );
 
+export const deleteService = createAsyncThunk(
+  "service/deleteService",
+  async (option, { rejectWithValue }) => {
+    const { token, slug } = option;
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${BACKEND_API_BASE_URL}/api/admin/service/${slug}`,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response?.data?.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch categories."
+      );
+    }
+  }
+);
+
 // Initial state
 const initialState = {
   serviceList: [],
@@ -134,7 +153,24 @@ const serviceSlice = createSlice({
       .addCase(fetchSingleServices.rejected, (state, action) => {
         state.dataLoading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(deleteService.pending, (state) => {
+  state.loading = true;
+  state.error = null;
+})
+.addCase(deleteService.fulfilled, (state, action) => {
+  state.loading = false;
+
+  state.serviceList = state.serviceList.filter(
+    (service) => service.slug !== action.meta.arg.slug
+  );
+
+  state.documentCount = Math.max(0, state.documentCount - 1);
+})
+.addCase(deleteService.rejected, (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
+});
   },
 });
 

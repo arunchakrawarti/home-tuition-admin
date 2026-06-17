@@ -26,6 +26,27 @@ export const fetchQueries = createAsyncThunk(
   }
 );
 
+export const deleteQuery = createAsyncThunk(
+  "query/deleteQuery",
+  async ({ token, id }, { rejectWithValue }) => {
+    try {
+      const response = await axios({
+        method: "DELETE",
+        url: `${BACKEND_API_BASE_URL}/api/admin/query/${id}`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return { id, ...response.data };
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to delete query."
+      );
+    }
+  }
+);
+
 const initialState = {
   queryList: [],
   documentCount: 0,
@@ -63,6 +84,10 @@ const querySlice = createSlice({
       .addCase(fetchQueries.rejected, (state, action) => {
         state.dataLoading = false;
         state.error = action.payload;
+      })
+      .addCase(deleteQuery.fulfilled, (state, action) => {
+        state.queryList = state.queryList.filter((query) => query._id !== action.payload.id);
+        state.documentCount = Math.max(0, state.documentCount - 1);
       });
   },
 });
