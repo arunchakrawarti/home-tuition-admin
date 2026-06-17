@@ -43,6 +43,7 @@ const TableRow = ({ data = {} }) => {
     console.log(error);
   }
 };
+
   const {
     _id,
     thumbnail = {},

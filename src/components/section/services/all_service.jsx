@@ -15,17 +15,6 @@ const TableRow = ({ data = {} }) => {
   const [isPublished, setIsPublished] = useState(false);
   const dispatch = useDispatch();
 
-  const handleToggle = async (blog_id) => {
-    setIsPublished(!isPublished);
-    const resultAction = await dispatch(
-      createBlog({
-        token,
-        blogId: blog_id,
-        blogData: { published: !isPublished },
-      }),
-    );
-  };
-
   const handleDelete = async (id) => {
     const confirmDelete = confirm("Are you sure want to delete this blog?");
 
@@ -40,6 +29,7 @@ const TableRow = ({ data = {} }) => {
 
         toast.success("Blog deleted successfully");
       }
+      dispatch(fetchServices({ token, filters: { limit: DOC_LIMIT, page } }));
     } catch (error) {
       console.log(error);
     }

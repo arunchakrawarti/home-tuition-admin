@@ -31,7 +31,7 @@ const QueryList = ({ page = 1 }) => {
       token,
       id,
     })
-  );
+  ).unwrap();
 };
 
   useEffect(() => {
