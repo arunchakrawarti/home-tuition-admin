@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import moment from "moment/moment";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PaginationV2 from "~/components/common/PaginationV2";
@@ -41,6 +42,7 @@ const TableRow = ({ data = {} }) => {
     }
   } catch (error) {
     console.log(error);
+    toast.error("Something went wrong");
   }
 };
 

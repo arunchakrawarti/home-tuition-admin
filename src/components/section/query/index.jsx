@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PaginationV2 from "~/components/common/PaginationV2";
 import { deleteQuery, fetchQueries } from "~/lib/redux/slices/query-slice";
+import { toast } from "react-toastify";
 import QueryRow from "./QueryRow";
 
 const DOC_LIMIT = 10;
@@ -19,19 +20,34 @@ const QueryList = ({ page = 1 }) => {
     documentCount = 0,
   } = useSelector((state) => state.query);
 
-  const handleDelete = async (id) => {
+const handleDelete = async (id) => {
   const confirmDelete = window.confirm(
     "Are you sure you want to delete this query?"
   );
 
   if (!confirmDelete) return;
 
-  await dispatch(
-    deleteQuery({
-      token,
-      id,
-    })
-  ).unwrap();
+  try {
+    await dispatch(
+      deleteQuery({
+        token,
+        id,
+      })
+    ).unwrap();
+    toast.success("Query deleted successfully");
+    dispatch(
+      fetchQueries({
+        token,
+        filters: {
+          page,
+          limit: DOC_LIMIT,
+        },
+      })
+    );
+  } catch (error) {
+    console.log(error);
+    toast.error("Something went wrong");
+  }
 };
 
   useEffect(() => {

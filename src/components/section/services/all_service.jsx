@@ -4,6 +4,7 @@ import moment from "moment/moment";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import PaginationV2 from "~/components/common/PaginationV2";
 import { createBlog } from "~/lib/redux/slices/blog-slice";
@@ -11,29 +12,41 @@ import { deleteService, fetchServices } from "~/lib/redux/slices/service-slice";
 import { limitTextLength } from "~/utils/limitText";
 const token = Cookies.get("access_token");
 
-const TableRow = ({ data = {} }) => {
+const TableRow = ({ data = {},page  }) => {
   const [isPublished, setIsPublished] = useState(false);
   const dispatch = useDispatch();
 
-  const handleDelete = async (id) => {
-    const confirmDelete = confirm("Are you sure want to delete this blog?");
+const handleDelete = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure want to delete this service?"
+  );
 
-    try {
-      if (confirmDelete) {
-        await dispatch(
-          deleteService({
-            slug: id,
-            token,
-          }),
-        ).unwrap();
+  if (!confirmDelete) return;
 
-        toast.success("Blog deleted successfully");
-      }
-      dispatch(fetchServices({ token, filters: { limit: DOC_LIMIT, page } }));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    await dispatch(
+      deleteService({
+        slug: id,
+        token,
+      })
+    ).unwrap();
+
+    await dispatch(
+      fetchServices({
+        token,
+        filters: {
+          limit: DOC_LIMIT,
+          page,
+        },
+      })
+    );
+
+    toast.success("Service deleted successfully");
+  } catch (error) {
+    console.log(error);
+    toast.error("Something went wrong");
+  }
+};
 
   const {
     _id,
@@ -203,7 +216,7 @@ export const AllService = ({ page }) => {
                 } = data;
 
                 const publishDate = moment(createdAt).format("DD MMM YY");
-                return <TableRow key={_id} data={data} />;
+                return <TableRow key={_id} data={data}   page={page} />;
               })}
             </tbody>
           </table>
